@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacific Wellness BMI Calculator</title>
+
+  <!-- Google Fonts: Montserrat (headings) & Lato (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;700&family=Montserrat:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="theme-default">
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <span class="logo-mark" aria-hidden="true">PW</span>
+        <span class="logo-text">Pacific Wellness</span>
+      </div>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#calculator">BMI Check</a></li>
+          <li><a href="#recommendations">Goals</a></li>
+          <li><a href="#learn">Learn</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero / Intro Section -->
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Find Your Fitness Starting Point</h1>
+          <p>
+            Use this guided BMI calculator to quickly understand your current
+            fitness level and get gentle, beginner-friendly suggestions for
+            your next steps.
+          </p>
+          <a class="btn btn-primary" href="#calculator">
+            Start BMI Check
+          </a>
+        </div>
+
+        <!-- Illustration placeholder (can be replaced with an actual image later) -->
+        <div
+          class="hero-illustration"
+          role="img"
+          aria-label="Abstract illustration representing wellness and fitness progress"
+        ></div>
+      </div>
+    </section>
+
+    <!-- Main Interaction Area: BMI Calculator -->
+    <section id="calculator" class="section section-surface">
+      <div class="container">
+        <header class="section-header">
+          <h2>BMI Calculator</h2>
+          <p>
+            Fill out the details below to calculate your BMI and see what it
+            means for your health. All fields are beginner friendly and clearly
+            labeled.
+          </p>
+        </header>
+
+        <form class="card bmi-form" aria-label="BMI calculator">
+          <!-- Measurement units -->
+          <fieldset class="field-group">
+            <legend>Units</legend>
+            <div class="field-inline">
+              <label>
+                <input
+                  type="radio"
+                  name="unit-system"
+                  value="metric"
+                  checked
+                />
+                Metric (cm, kg)
+              </label>
+              <label>
+                <input type="radio" name="unit-system" value="imperial" />
+                Imperial (ft/in, lbs)
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Height & Weight -->
+          <div class="field-grid">
+            <div class="field">
+              <label for="height">
+                Height
+                <span class="field-help" id="height-help">
+                  Enter your height in centimeters.
+                </span>
+              </label>
+              <input
+                type="number"
+                id="height"
+                name="height"
+                min="50"
+                max="250"
+                step="0.1"
+                aria-describedby="height-help"
+                placeholder="e.g., 165"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="weight">
+                Weight
+                <span class="field-help" id="weight-help">
+                  Enter your weight in kilograms.
+                </span>
+              </label>
+              <input
+                type="number"
+                id="weight"
+                name="weight"
+                min="20"
+                max="300"
+                step="0.1"
+                aria-describedby="weight-help"
+                placeholder="e.g., 70"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Age & Gender -->
+          <div class="field-grid">
+            <div class="field">
+              <label for="age">
+                Age
+                <span class="field-help" id="age-help">
+                  Your age in years helps provide better context.
+                </span>
+              </label>
+              <input
+                type="number"
+                id="age"
+                name="age"
+                min="10"
+                max="120"
+                aria-describedby="age-help"
+                placeholder="e.g., 21"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="gender">
+                Gender
+                <span class="field-help" id="gender-help">
+                  Optional. Choose the option that feels right for you.
+                </span>
+              </label>
+              <select
+                id="gender"
+                name="gender"
+                aria-describedby="gender-help"
+              >
+                <option value="">Prefer not to say</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="nonbinary">Non-binary</option>
+                <option value="other">Another identity</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Activity Level -->
+          <div class="field">
+            <label for="activity-level">
+              Activity level
+              <span class="field-help" id="activity-help">
+                This helps shape beginner-friendly goal suggestions.
+              </span>
+            </label>
+            <select
+              id="activity-level"
+              name="activity-level"
+              aria-describedby="activity-help"
+              required
+            >
+              <option value="">Select an option</option>
+              <option value="low">Low (mostly sitting)</option>
+              <option value="moderate">Moderate (some walking or light exercise)</option>
+              <option value="high">High (regular exercise most days)</option>
+            </select>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+              Calculate BMI
+            </button>
+            <p class="form-note">
+              This tool is for educational guidance only and is not a medical
+              diagnosis.
+            </p>
+          </div>
+        </form>
+
+        <!-- Placeholder for results / will be wired with JS later -->
+        <section
+          class="card results-placeholder"
+          aria-label="BMI results"
+          aria-live="polite"
+        >
+          <h3>Your BMI Results</h3>
+          <p>
+            Once you calculate your BMI, your results will appear here with
+            a simple explanation and a visual indicator of your category.
+          </p>
+
+          <div class="results-summary">
+            <div class="results-number">
+              <span class="results-label">BMI</span>
+              <span class="results-value">--</span>
+            </div>
+            <div class="results-category">
+              <span class="results-label">Category</span>
+              <span class="results-value">Not yet calculated</span>
+            </div>
+          </div>
+
+          <div class="results-bar" aria-hidden="true">
+            <span class="bar-segment segment-underweight">Underweight</span>
+            <span class="bar-segment segment-healthy">Healthy</span>
+            <span class="bar-segment segment-overweight">Overweight</span>
+            <span class="bar-segment segment-obese">Obese</span>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Feature / Recommendation Section -->
+    <section id="recommendations" class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Beginner-Friendly Recommendations</h2>
+          <p>
+            After you see your BMI, explore gentle suggestions to move toward
+            your fitness goals in a way that feels realistic and kind to your body.
+          </p>
+        </header>
+
+        <div class="card-grid">
+          <article class="card feature-card">
+            <h3>Understand Your Fitness Level</h3>
+            <p>
+              Learn what your BMI category means, including strengths and
+              things to watch for, explained in clear and simple terms.
+            </p>
+          </article>
+
+          <article class="card feature-card">
+            <h3>Set Realistic Goals</h3>
+            <p>
+              Get suggested starting points for your next steps, such as daily
+              movement, simple routines, and check-in milestones.
+            </p>
+          </article>
+
+          <article class="card feature-card">
+            <h3>Explore Beginner Workouts</h3>
+            <p>
+              See beginner-friendly workout ideas tailored to your current
+              activity level, with low-pressure options to ease into movement.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learn / Education Section -->
+    <section id="learn" class="section section-surface">
+      <div class="container">
+        <header class="section-header">
+          <h2>Learn About BMI</h2>
+          <p>
+            BMI is just one way to look at health. It has strengths and
+            limitations, and it doesn’t describe your worth or your full health story.
+          </p>
+        </header>
+
+        <div class="learn-grid">
+          <article class="card">
+            <h3>What BMI Measures</h3>
+            <p>
+              BMI compares your weight to your height and places you in a
+              general category. It is a rough starting point, not the final word.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Limitations of BMI</h3>
+            <p>
+              BMI does not account for muscle, body composition, or many other
+              factors. It should be balanced with how you feel and guidance from
+              health professionals.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Focusing on Sustainable Habits</h3>
+            <p>
+              Instead of chasing quick changes, focus on small, consistent
+              actions like gentle movement, rest, and nourishment.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>About This App</h2>
+        </header>
+
+        <div class="card">
+          <p>
+            Pacific Wellness BMI is designed as a calm, beginner-friendly
+            starting point for people who are curious about their current
+            fitness level. It combines a simple BMI calculator with clear
+            explanations and gentle recommendations.
+          </p>
+          <p>
+            Over time, this app aims to grow into a space where you can track
+            progress, explore accessible workout ideas, and build sustainable
+            habits at your own pace.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Pacific Wellness. All rights reserved.</p>
+      <p class="footer-note">
+        This app is for educational purposes only and does not replace medical advice.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Placeholder script file (will be added in Prompt 5) -->
+  <script src="script.js" defer></script>
+</body>
+</html>

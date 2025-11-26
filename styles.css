@@ -1,0 +1,602 @@
+/* 
+  Pacific Wellness BMI App
+  - Theme: Calm, professional, beginner-friendly
+  - Fonts: Montserrat (headings), Lato (body)
+  - Mobile-first, responsive
+*/
+
+/* =========================
+   CSS VARIABLES / TOKENS
+   ========================= */
+::root {
+  /* Brand colors – default "Pacific Wellness" theme */
+  --color-primary: #4b74a6;
+  --color-secondary: #a7c6ed;
+  --color-accent: #f2b441;
+  --color-bg: #fdfdfe;
+  --color-surface: #ffffff;
+  --color-text: #1e1e1e;
+
+  /* Stronger variants for hover / active */
+  --color-primary-strong: #395a80;   /* darker blue for better contrast */
+  --color-accent-strong: #d89425;    /* slightly darker gold */
+
+  /* Focus outline color */
+  --color-focus: var(--color-accent);
+
+  /* Typography */
+  --font-heading: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-body: "Lato", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Radius & shadows */
+  --radius-sm: 0.4rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.05);
+
+  /* Layout */
+  --max-width: 72rem;
+}
+
+/* =========================
+   THEMES
+   Body classes override base tokens
+   ========================= */
+
+/* Default theme (Pacific Wellness)
+   - Uses the :root values, so no overrides needed
+*/
+body.theme-default {
+  /* no overrides yet – just here for clarity */
+}
+
+/* Light theme – brighter surfaces, same general palette */
+body.theme-light {
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #111827;
+  --color-primary: #4b74a6;
+  --color-primary-strong: #395a80;
+  --color-secondary: #c7ddf6;
+  --color-accent: #f2b441;
+  --color-accent-strong: #d89425;
+  --color-focus: var(--color-accent);
+}
+
+/* Dark theme – dark background with accessible contrast */
+body.theme-dark {
+  --color-bg: #020617;
+  --color-surface: #0b1120;
+  --color-text: #e5e7eb;
+  --color-primary: #60a5fa;
+  --color-primary-strong: #2563eb;
+  --color-secondary: #1d4ed8;
+  --color-accent: #facc15;
+  --color-accent-strong: #eab308;
+  --color-focus: #facc15;
+}
+
+/* High-Contrast theme – strong foreground/background separation */
+body.theme-high-contrast {
+  --color-bg: #000000;
+  --color-surface: #000000;
+  --color-text: #ffffff;
+  --color-primary: #00ffff;          /* cyan */
+  --color-primary-strong: #00bcd4;
+  --color-secondary: #ffff00;        /* yellow */
+  --color-accent: #ff00ff;           /* magenta */
+  --color-accent-strong: #d800d8;
+  --color-focus: #ffffff;
+}
+
+
+
+/* =========================
+   GLOBAL RESET / BASE
+   ========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Make images and media responsive */
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   ACCESSIBILITY UTILITIES
+   ========================= */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  z-index: 1000;
+  border-radius: var(--radius-sm);
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+}
+
+/* Focus outlines for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+
+/* =========================
+   LAYOUT HELPERS
+   ========================= */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section {
+  padding: var(--space-2xl) 0;
+}
+
+.section-surface {
+  padding: var(--space-2xl) 0;
+  background-color: var(--color-surface);
+}
+
+.section-header {
+  max-width: 40rem;
+  margin: 0 auto var(--space-xl);
+  text-align: center;
+}
+
+.section-header h2 {
+  margin-bottom: var(--space-sm);
+}
+
+.section-header p {
+  margin: 0;
+}
+
+/* =========================
+   TYPOGRAPHY
+   ========================= */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  margin-top: 0;
+  color: #142131;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+/* Make headings slightly larger on bigger screens */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.9rem;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+  }
+}
+
+/* =========================
+   HEADER / NAVBAR
+   ========================= */
+.site-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-sm);
+  padding-bottom: var(--space-sm);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-heading);
+}
+
+.logo-mark {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.logo-text {
+  font-weight: 600;
+}
+
+.site-nav {
+  display: none; /* Mobile-first: hidden, show on larger screens */
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+}
+
+.nav-list a:hover,
+.nav-list a:focus-visible {
+  background-color: var(--color-secondary);
+  color: #0b1020;
+}
+
+/* Show nav on medium+ screens */
+@media (min-width: 768px) {
+  .site-nav {
+    display: block;
+  }
+}
+
+/* =========================
+   HERO SECTION
+   ========================= */
+.hero {
+  padding: var(--space-2xl) 0;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.hero-text {
+  max-width: 32rem;
+  text-align: left;
+}
+
+.hero-text p {
+  margin-bottom: var(--space-md);
+}
+
+.hero-illustration {
+  width: 100%;
+  max-width: 20rem;
+  height: 12rem;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(
+    circle at top left,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  box-shadow: var(--shadow-soft);
+}
+
+/* Side-by-side layout on larger screens */
+@media (min-width: 900px) {
+  .hero-inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .hero-text {
+    max-width: 30rem;
+  }
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease,
+    box-shadow 0.1s ease;
+  text-decoration: none;
+}
+
+
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: var(--color-primary-strong);
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   CARDS & GRIDS
+   ========================= */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.card-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+/* On larger screens, arrange cards in columns */
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Feature cards */
+.feature-card h3 {
+  margin-bottom: var(--space-sm);
+}
+
+/* =========================
+   FORM STYLES
+   ========================= */
+.bmi-form {
+  margin-bottom: var(--space-xl);
+}
+
+.field-group {
+  margin-bottom: var(--space-md);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+}
+
+.field-group legend {
+  font-weight: 600;
+  padding: 0 var(--space-xs);
+}
+
+.field-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.field-grid {
+  display: grid;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+/* Two columns on medium+ screens */
+@media (min-width: 600px) {
+  .field-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-weight: 500;
+}
+
+.field-help {
+  display: block;
+  font-size: 0.8rem;
+  color: #5b6472;
+}
+
+input[type="number"],
+select {
+  padding: 0.5rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  font: inherit;
+  background-color: #ffffff;
+}
+
+input[type="number"]:focus-visible,
+select:focus-visible {
+  border-color: var(--color-primary);
+}
+
+/* =========================
+   FORM ACTIONS
+   ========================= */
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.form-note {
+  font-size: 0.85rem;
+  color: #5b6472;
+  margin: 0;
+}
+
+/* =========================
+   RESULTS PLACEHOLDER
+   ========================= */
+.results-placeholder {
+  margin-top: var(--space-xl);
+}
+
+.results-summary {
+  display: grid;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.results-number,
+.results-category {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: #f1f5fb;
+}
+
+.results-label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #656f7f;
+}
+
+.results-value {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Results bar visualization */
+.results-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: var(--space-md);
+  border-radius: 999px;
+  overflow: hidden;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.bar-segment {
+  padding: 0.5rem 0.25rem;
+  color: #0b1020;
+}
+
+.segment-underweight {
+  background-color: #cbd5e1;
+}
+
+.segment-healthy {
+  background-color: #a7c6ed;
+}
+
+.segment-overweight {
+  background-color: #f2b441;
+}
+
+.segment-obese {
+  background-color: #f97373;
+}
+
+/* =========================
+   LEARN SECTION GRID
+   ========================= */
+.learn-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .learn-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+.site-footer {
+  padding: var(--space-lg) 0;
+  background-color: #111827;
+  color: #e5e7eb;
+  margin-top: var(--space-2xl);
+}
+
+.footer-inner {
+  text-align: center;
+}
+
+.footer-note {
+  font-size: 0.85rem;
+  margin-top: var(--space-xs);
+}
