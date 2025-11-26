@@ -1,15 +1,4 @@
-/* 
-  Pacific Wellness BMI App
-  - Theme: Calm, professional, beginner-friendly
-  - Fonts: Montserrat (headings), Lato (body)
-  - Mobile-first, responsive
-*/
-
-/* =========================
-   CSS VARIABLES / TOKENS
-   ========================= */
-::root {
-  /* Brand colors – default "Pacific Wellness" theme */
+:root {
   --color-primary: #4b74a6;
   --color-secondary: #a7c6ed;
   --color-accent: #f2b441;
@@ -17,20 +6,15 @@
   --color-surface: #ffffff;
   --color-text: #1e1e1e;
 
-  /* Stronger variants for hover / active */
-  --color-primary-strong: #395a80;   /* darker blue for better contrast */
-  --color-accent-strong: #d89425;    /* slightly darker gold */
-
-  /* Focus outline color */
+  --color-primary-strong: #395a80;
+  --color-accent-strong: #d89425;
   --color-focus: var(--color-accent);
 
-  /* Typography */
   --font-heading: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
   --font-body: "Lato", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
 
-  /* Spacing scale */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -38,42 +22,21 @@
   --space-xl: 2rem;
   --space-2xl: 3rem;
 
-  /* Radius & shadows */
   --radius-sm: 0.4rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.05);
 
-  /* Layout */
   --max-width: 72rem;
 }
 
-/* =========================
-   THEMES
-   Body classes override base tokens
-   ========================= */
-
-/* Default theme (Pacific Wellness)
-   - Uses the :root values, so no overrides needed
-*/
-body.theme-default {
-  /* no overrides yet – just here for clarity */
-}
-
-/* Light theme – brighter surfaces, same general palette */
+/* Themes */
+body.theme-default {}
 body.theme-light {
   --color-bg: #f8fafc;
   --color-surface: #ffffff;
   --color-text: #111827;
-  --color-primary: #4b74a6;
-  --color-primary-strong: #395a80;
-  --color-secondary: #c7ddf6;
-  --color-accent: #f2b441;
-  --color-accent-strong: #d89425;
-  --color-focus: var(--color-accent);
 }
-
-/* Dark theme – dark background with accessible contrast */
 body.theme-dark {
   --color-bg: #020617;
   --color-surface: #0b1120;
@@ -85,25 +48,19 @@ body.theme-dark {
   --color-accent-strong: #eab308;
   --color-focus: #facc15;
 }
-
-/* High-Contrast theme – strong foreground/background separation */
 body.theme-high-contrast {
   --color-bg: #000000;
   --color-surface: #000000;
   --color-text: #ffffff;
-  --color-primary: #00ffff;          /* cyan */
+  --color-primary: #00ffff;
   --color-primary-strong: #00bcd4;
-  --color-secondary: #ffff00;        /* yellow */
-  --color-accent: #ff00ff;           /* magenta */
+  --color-secondary: #ffff00;
+  --color-accent: #ff00ff;
   --color-accent-strong: #d800d8;
   --color-focus: #ffffff;
 }
 
-
-
-/* =========================
-   GLOBAL RESET / BASE
-   ========================= */
+/* Reset / base */
 *,
 *::before,
 *::after {
@@ -122,7 +79,6 @@ body {
   line-height: 1.6;
 }
 
-/* Make images and media responsive */
 img,
 svg,
 video {
@@ -131,9 +87,7 @@ video {
   display: block;
 }
 
-/* =========================
-   ACCESSIBILITY UTILITIES
-   ========================= */
+/* Accessibility */
 .skip-link {
   position: absolute;
   left: -999px;
@@ -144,12 +98,10 @@ video {
   z-index: 1000;
   border-radius: var(--radius-sm);
 }
-
 .skip-link:focus {
   left: 0.5rem;
 }
 
-/* Focus outlines for keyboard users */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -158,10 +110,7 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-
-/* =========================
-   LAYOUT HELPERS
-   ========================= */
+/* Layout helpers */
 .container {
   width: 100%;
   max-width: var(--max-width);
@@ -188,13 +137,7 @@ select:focus-visible {
   margin-bottom: var(--space-sm);
 }
 
-.section-header p {
-  margin: 0;
-}
-
-/* =========================
-   TYPOGRAPHY
-   ========================= */
+/* Typography */
 h1,
 h2,
 h3,
@@ -208,33 +151,26 @@ h1 {
   font-size: 2rem;
   line-height: 1.2;
 }
-
 h2 {
   font-size: 1.6rem;
 }
-
 h3 {
   font-size: 1.25rem;
 }
 
-/* Make headings slightly larger on bigger screens */
 @media (min-width: 768px) {
   h1 {
     font-size: 2.5rem;
   }
-
   h2 {
     font-size: 1.9rem;
   }
-
   h3 {
     font-size: 1.35rem;
   }
 }
 
-/* =========================
-   HEADER / NAVBAR
-   ========================= */
+/* Header / nav */
 .site-header {
   background-color: var(--color-surface);
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
@@ -262,7 +198,11 @@ h3 {
   width: 2rem;
   height: 2rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -276,9 +216,8 @@ h3 {
 }
 
 .site-nav {
-  display: none; /* Mobile-first: hidden, show on larger screens */
+  display: none;
 }
-
 .nav-list {
   list-style: none;
   display: flex;
@@ -286,7 +225,6 @@ h3 {
   margin: 0;
   padding: 0;
 }
-
 .nav-list a {
   text-decoration: none;
   color: var(--color-text);
@@ -294,43 +232,35 @@ h3 {
   padding: 0.25rem 0.5rem;
   border-radius: 999px;
 }
-
 .nav-list a:hover,
 .nav-list a:focus-visible {
   background-color: var(--color-secondary);
   color: #0b1020;
 }
 
-/* Show nav on medium+ screens */
 @media (min-width: 768px) {
   .site-nav {
     display: block;
   }
 }
 
-/* =========================
-   HERO SECTION
-   ========================= */
+/* Hero */
 .hero {
   padding: var(--space-2xl) 0;
 }
-
 .hero-inner {
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
   align-items: center;
 }
-
 .hero-text {
   max-width: 32rem;
   text-align: left;
 }
-
 .hero-text p {
   margin-bottom: var(--space-md);
 }
-
 .hero-illustration {
   width: 100%;
   max-width: 20rem;
@@ -344,21 +274,17 @@ h3 {
   box-shadow: var(--shadow-soft);
 }
 
-/* Side-by-side layout on larger screens */
 @media (min-width: 900px) {
   .hero-inner {
     flex-direction: row;
     justify-content: space-between;
   }
-
   .hero-text {
     max-width: 30rem;
   }
 }
 
-/* =========================
-   BUTTONS
-   ========================= */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -374,52 +300,41 @@ h3 {
     box-shadow 0.1s ease;
   text-decoration: none;
 }
-
-
-
 .btn-primary {
   background-color: var(--color-primary);
   color: #ffffff;
   box-shadow: var(--shadow-soft);
 }
-
 .btn-primary:hover,
 .btn-primary:focus-visible {
   background-color: var(--color-primary-strong);
   transform: translateY(-1px);
 }
+.btn-primary:active {
+  transform: translateY(0);
+}
 
-
-/* =========================
-   CARDS & GRIDS
-   ========================= */
+/* Cards & grids */
 .card {
   background-color: var(--color-surface);
   border-radius: var(--radius-md);
   padding: var(--space-lg);
   box-shadow: var(--shadow-soft);
 }
-
 .card-grid {
   display: grid;
   gap: var(--space-lg);
 }
-
-/* On larger screens, arrange cards in columns */
 @media (min-width: 768px) {
   .card-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-
-/* Feature cards */
 .feature-card h3 {
   margin-bottom: var(--space-sm);
 }
 
-/* =========================
-   FORM STYLES
-   ========================= */
+/* Form styles */
 .bmi-form {
   margin-bottom: var(--space-xl);
 }
@@ -430,12 +345,10 @@ h3 {
   padding: var(--space-md);
   border-radius: var(--radius-md);
 }
-
 .field-group legend {
   font-weight: 600;
   padding: 0 var(--space-xs);
 }
-
 .field-inline {
   display: flex;
   flex-wrap: wrap;
@@ -448,8 +361,6 @@ h3 {
   gap: var(--space-md);
   margin-bottom: var(--space-md);
 }
-
-/* Two columns on medium+ screens */
 @media (min-width: 600px) {
   .field-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -461,11 +372,9 @@ h3 {
   flex-direction: column;
   gap: 0.4rem;
 }
-
 .field label {
   font-weight: 500;
 }
-
 .field-help {
   display: block;
   font-size: 0.8rem;
@@ -480,15 +389,12 @@ select {
   font: inherit;
   background-color: #ffffff;
 }
-
 input[type="number"]:focus-visible,
 select:focus-visible {
   border-color: var(--color-primary);
 }
 
-/* =========================
-   FORM ACTIONS
-   ========================= */
+/* Form actions */
 .form-actions {
   display: flex;
   flex-direction: column;
@@ -496,33 +402,27 @@ select:focus-visible {
   gap: var(--space-sm);
   margin-top: var(--space-md);
 }
-
 .form-note {
   font-size: 0.85rem;
   color: #5b6472;
   margin: 0;
 }
 
-/* =========================
-   RESULTS PLACEHOLDER
-   ========================= */
+/* Results */
 .results-placeholder {
   margin-top: var(--space-xl);
 }
-
 .results-summary {
   display: grid;
   gap: var(--space-md);
   margin-top: var(--space-md);
 }
-
 .results-number,
 .results-category {
   padding: var(--space-md);
   border-radius: var(--radius-md);
   background-color: #f1f5fb;
 }
-
 .results-label {
   display: block;
   font-size: 0.8rem;
@@ -530,13 +430,11 @@ select:focus-visible {
   letter-spacing: 0.06em;
   color: #656f7f;
 }
-
 .results-value {
   font-size: 1.2rem;
   font-weight: 600;
 }
 
-/* Results bar visualization */
 .results-bar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -546,57 +444,56 @@ select:focus-visible {
   font-size: 0.75rem;
   text-align: center;
 }
-
 .bar-segment {
   padding: 0.5rem 0.25rem;
   color: #0b1020;
 }
-
 .segment-underweight {
   background-color: #cbd5e1;
 }
-
 .segment-healthy {
   background-color: #a7c6ed;
 }
-
 .segment-overweight {
   background-color: #f2b441;
 }
-
 .segment-obese {
   background-color: #f97373;
 }
 
-/* =========================
-   LEARN SECTION GRID
-   ========================= */
+/* Learn section */
 .learn-grid {
   display: grid;
   gap: var(--space-lg);
 }
-
 @media (min-width: 768px) {
   .learn-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-/* =========================
-   FOOTER
-   ========================= */
+/* Footer */
 .site-footer {
   padding: var(--space-lg) 0;
   background-color: #111827;
   color: #e5e7eb;
   margin-top: var(--space-2xl);
 }
-
 .footer-inner {
   text-align: center;
 }
-
 .footer-note {
   font-size: 0.85rem;
   margin-top: var(--space-xs);
+}
+
+/* Reveal animation */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
