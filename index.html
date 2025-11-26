@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="theme-default">
-  <!-- Skip link for accessibility -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header class="site-header">
@@ -40,7 +39,7 @@
   </header>
 
   <main id="main-content">
-    <!-- Hero / Intro Section -->
+    <!-- HERO -->
     <section id="hero" class="hero">
       <div class="container hero-inner">
         <div class="hero-text">
@@ -50,12 +49,9 @@
             fitness level and get gentle, beginner-friendly suggestions for
             your next steps.
           </p>
-          <a class="btn btn-primary" href="#calculator">
-            Start BMI Check
-          </a>
+          <a class="btn btn-primary" href="#calculator">Start BMI Check</a>
         </div>
 
-        <!-- Illustration placeholder (can be replaced with an actual image later) -->
         <div
           class="hero-illustration"
           role="img"
@@ -64,7 +60,7 @@
       </div>
     </section>
 
-    <!-- Main Interaction Area: BMI Calculator -->
+    <!-- CALCULATOR -->
     <section id="calculator" class="section section-surface">
       <div class="container">
         <header class="section-header">
@@ -77,7 +73,6 @@
         </header>
 
         <form class="card bmi-form" aria-label="BMI calculator">
-          <!-- Measurement units -->
           <fieldset class="field-group">
             <legend>Units</legend>
             <div class="field-inline">
@@ -97,7 +92,6 @@
             </div>
           </fieldset>
 
-          <!-- Height & Weight -->
           <div class="field-grid">
             <div class="field">
               <label for="height">
@@ -140,7 +134,6 @@
             </div>
           </div>
 
-          <!-- Age & Gender -->
           <div class="field-grid">
             <div class="field">
               <label for="age">
@@ -182,7 +175,6 @@
             </div>
           </div>
 
-          <!-- Activity Level -->
           <div class="field">
             <label for="activity-level">
               Activity level
@@ -198,12 +190,15 @@
             >
               <option value="">Select an option</option>
               <option value="low">Low (mostly sitting)</option>
-              <option value="moderate">Moderate (some walking or light exercise)</option>
-              <option value="high">High (regular exercise most days)</option>
+              <option value="moderate">
+                Moderate (some walking or light exercise)
+              </option>
+              <option value="high">
+                High (regular exercise most days)
+              </option>
             </select>
           </div>
 
-          <!-- Submit -->
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">
               Calculate BMI
@@ -215,7 +210,6 @@
           </div>
         </form>
 
-        <!-- Placeholder for results / will be wired with JS later -->
         <section
           class="card results-placeholder"
           aria-label="BMI results"
@@ -248,7 +242,7 @@
       </div>
     </section>
 
-    <!-- Feature / Recommendation Section -->
+    <!-- RECOMMENDATIONS -->
     <section id="recommendations" class="section">
       <div class="container">
         <header class="section-header">
@@ -287,7 +281,7 @@
       </div>
     </section>
 
-    <!-- Learn / Education Section -->
+    <!-- LEARN -->
     <section id="learn" class="section section-surface">
       <div class="container">
         <header class="section-header">
@@ -327,7 +321,7 @@
       </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ABOUT -->
     <section id="about" class="section">
       <div class="container">
         <header class="section-header">
@@ -360,7 +354,6 @@
     </div>
   </footer>
 
-  <!-- Placeholder script file (will be added in Prompt 5) -->
   <script src="script.js" defer></script>
 </body>
 </html>
